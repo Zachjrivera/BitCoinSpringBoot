@@ -13,23 +13,23 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableScheduling
 public class BitcoinrefreshApplication {
-	private static final Logger log = LoggerFactory.getLogger(BitcoinrefreshApplication.class);
+	//private static final Logger log = LoggerFactory.getLogger(BitcoinrefreshApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(BitcoinrefreshApplication.class, args);
 	}
 
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder ) {
-		return builder.build();
-	}
-
-	@Bean
-	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-		return args -> {
-			Ticker ticker = restTemplate.getForObject(
-
-					"http://api.icndb.com/jokes/random", Ticker.class);
-			log.info(ticker.toString());
-		};
-	}
+//	@Bean
+//	public RestTemplate restTemplate(RestTemplateBuilder builder ) {
+//		return builder.build();
+//	}
+//
+//	@Bean
+//	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+//		return args -> {
+//			Ticker ticker = restTemplate.getForObject(
+//
+//					"http://api.icndb.com/jokes/random", Ticker.class);
+//			log.info(ticker.toString());
+//		};
+//	}
 }

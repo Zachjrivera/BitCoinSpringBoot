@@ -3,6 +3,7 @@ package com.zach.bitcoinrefresh;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -14,21 +15,27 @@ import org.springframework.web.client.RestTemplate;
 public class Ticker {
     private String base;
     private String target;
-    private int price;
-    private int volume;
-    private int change;
+    private double price;
+    private double volume;
+    private double change;
+    private long timestamp;
+    private boolean success;
+    private String error;
     private static final Logger log = LoggerFactory.getLogger(BitcoinrefreshApplication.class);
 
 
     public Ticker(){}
 
 
-    public Ticker(String base, String target, int price, int volume, int change) {
+    public Ticker(String base, String target, double price, double volume, double change, long timestamp, boolean success, String error) {
         this.base = base;
         this.target = target;
         this.price = price;
         this.volume = volume;
         this.change = change;
+        this.timestamp = timestamp;
+        this.success = success;
+        this.error = error;
     }
 
     public String getBase() {
@@ -47,28 +54,52 @@ public class Ticker {
         this.target = target;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getVolume() {
+    public double getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(double volume) {
         this.volume = volume;
     }
 
-    public int getChange() {
+    public double getChange() {
         return change;
     }
 
-    public void setChange(int change) {
+    public void setChange(double change) {
         this.change = change;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 
     @Override
@@ -79,6 +110,9 @@ public class Ticker {
                 ", price=" + price +
                 ", volume=" + volume +
                 ", change=" + change +
+                ", timestamp=" + timestamp +
+                ", success=" + success +
+                ", error='" + error + '\'' +
                 '}';
     }
 
