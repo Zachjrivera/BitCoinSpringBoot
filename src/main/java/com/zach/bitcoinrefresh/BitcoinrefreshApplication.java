@@ -26,10 +26,10 @@ public class BitcoinrefreshApplication {
 //	@Bean
 //	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 //		return args -> {
-//			Ticker ticker = restTemplate.getForObject(
+//			Bitcoin bitcoin = restTemplate.getForObject(
 //
-//					"http://api.icndb.com/jokes/random", Ticker.class);
-//			log.info(ticker.toString());
+//					"http://api.icndb.com/jokes/random", Bitcoin.class);
+//			log.info(bitcoin.toString());
 //		};
 //	}
 }
